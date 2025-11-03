@@ -24,17 +24,17 @@ const LoginPage = () => {
 			mutationFn : async({userName,password}) =>
 			{
 				try {
-					const res = await fetch(`${baseURL}/api/auth/login`,
-						{
-							method : "POST",
-							credentials : "include",
-							headers : 
-							{
-								"Content-Type" : 'application/json',
-							},
-							body : JSON.stringify({userName,password})
-						}
+					const res = await fetch(`${baseURL}/api/auth/login`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  credentials: "include",
+  body: JSON.stringify({ userName, password }),
+});
+
+
 					)
+					const text = await res.text();
+console.log("RAW RESPONSE:", text);
 
 					const data = await res.json()
 
