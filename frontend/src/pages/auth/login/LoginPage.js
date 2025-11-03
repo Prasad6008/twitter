@@ -19,43 +19,56 @@ const LoginPage = () => {
 
 	const queryClient = useQueryClient()
 
-	 const { mutate: login, isPending, isError, error } = useMutation({
-    mutationFn: async ({ userName, password }) => {
-      try {
-        const res = await fetch(`${baseURL}/api/auth/login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({ userName, password }),
-        });
+	const {mutate : login , isPending , isError , error}  = useMutation(
+		{
+			mutationFn : async({userName,password}) =>
+			{
+				try {
+					const res = await fetch(`${baseURL}/api/auth/login`,
+						{
+							method : "POST",
+							headers : 
+							{
+								"Content-Type" : 'application/json',
+							},
+							credentials : "include"
+							
+							body : JSON.stringify({userName,password})
+						}
+					)
 
-        // Check for HTML error response
-        const text = await res.text();
-        console.log("RAW RESPONSE:", text);
+				     const text = await res.text();
+                     console.log("RAW RESPONSE:", text);
 
-        let data;
-        try {
-          data = JSON.parse(text);
-        } catch {
-          throw new Error(data.error || "Something went wrong);
-        }
+					let data;
+                    try {
+                        data = JSON.parse(text);
+                   } catch {
+                       throw new Error("Invalid server response. (Maybe HTML instead of JSON)");
+	            	}
 
-        if (!res.ok) {
-          throw new Error(data.error || "Something went wrong");
-        }
-
-        console.log("Parsed Data:", data);
-        return data;
-      } catch (err) {
-        console.error("Login Error:", err);
-        throw err;
-      }
-    },
-    onSuccess: () => {
-      toast.success("Login Successfully");
-      queryClient.invalidateQueries({ queryKey: ["authUser"] });
-    },
-  });
+					if(!res.ok){
+						throw new Error(data.error || "Something went wrong")
+					}
+					console.log("Parsed Data:",data)
+					return data
+					
+				} catch (error) {
+					console.log(error)
+					throw error  //useMutate oda error ku
+				}
+			},
+			onSuccess : ()=>
+			{
+				toast.success("Login Successfully")
+				queryClient.invalidateQueries(
+					{
+						queryKey :[ "authUser"]
+					}
+				)
+			}
+		}
+	)
 
 
 	const handleSubmit = (e) => {
