@@ -1,0 +1,101 @@
+### SIGNUP
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+    "userName" : "sabari",
+    "fullName" : "Sabarisree M Y",
+    "email"    : "sabari@gmail.com",
+    "password" :  "sabari@123"
+}
+
+
+### LOGIN
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "userName"    : "preethi",
+    "password" :  "preethi123"
+}
+
+
+### PROFILE
+GET http://localhost:5000/api/auth/me
+
+
+### SERACH_USERS
+GET http://localhost:5000/api/user/profile/donmass
+
+
+### FOLLOW | UNFOLLOW
+POST http://localhost:5000/api/user/follow/68ecc19da29895b6444fcef3
+
+
+### SUGGESTIONS
+GET http://localhost:5000/api/user/suggestions
+
+
+
+### Update 
+POST http://localhost:5000/api/user/update
+Content-Type: application/json
+
+{
+  "userName": "",
+  "fullName": "",
+  "bio": "Video Editor | Coffee lover ☕ | Always learning 🚀",
+  "links": "https://github.com/editor-&-explorer"
+}
+
+### View all posts 
+GET http://localhost:5000/api/posts
+
+### Posts
+POST  http://localhost:5000/api/posts/create
+Content-Type: application/json
+
+{
+  "text" : "I am MERN stack developer...🔥"
+}
+
+### Delete Post 
+DELETE  http://localhost:5000/api/posts/690867f91e19513941a2e453
+
+### Comment Post
+POST http://localhost:5000/api/posts/comment/68ecb070719c56041bac83ab
+Content-Type: application/json
+
+{
+  "comment" : "super bro...✨"
+}
+
+### Like Post 
+POST http://localhost:5000/api/posts/like/68f099e925242c5ea29a3600
+
+
+### Show liked posts
+GET http://localhost:5000/api/posts/likedposts/68ecc623efbcb306e8f351fe
+
+### LOGOUT
+POST http://localhost:5000/api/auth/logout
+
+### Get following posts
+GET http://localhost:5000/api/posts/followingposts
+
+
+### Get user's posts 
+GET http://localhost:5000/api/posts/userposts/preethi
+
+
+### To view all notifications
+GET http://localhost:5000/api/notifications
+
+### Delete notification
+DELETE http://localhost:5000/api/notifications/68c54c9e7db578c47500d1f1
+
+
+### DELETE ALL notifications
+DELETE http://localhost:5000/api/notifications
+
+
