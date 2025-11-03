@@ -1046,7 +1046,7 @@
     flex-shrink: 0;
     cursor: pointer;
     appearance: none;
-    border-radius: calc(infinity * 1px);
+    border-radius: 9999px;
     padding: calc(0.25rem * 1);
     vertical-align: middle;
     border: var(--border) solid var(--input-color, currentColor);
@@ -1062,7 +1062,7 @@
       display: block;
       width: 100%;
       height: 100%;
-      border-radius: calc(infinity * 1px);
+      border-radius: 9999px;
       --tw-content: "";
       content: var(--tw-content);
       background-size: auto, calc(var(--noise) * 100%);
@@ -1808,7 +1808,7 @@
     border-radius: var(--radius-box);
   }
   .rounded-full {
-    border-radius: calc(infinity * 1px);
+    border-radius: 9999px;
   }
   .rounded-lg {
     border-radius: var(--radius-lg);
